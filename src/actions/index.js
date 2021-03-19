@@ -4,7 +4,7 @@ export const GET_SMURFS_START = 'GET_SMURFS_START';
 export const GET_SMURFS_SUCCESS = 'GET_SMURFS_SUCCESS';
 export const GET_SMURFS_FAIL = 'GET_SMURFS_FAIL';
 export const ADD_SMURF = 'ADD_SMURF';
-export const ADD_ERROR = 'ADD_ERROR';
+export const SET_ERROR = 'SET_ERROR';
 
 export function fetchSmurfs() {
     return function(dispatch) {
@@ -27,9 +27,9 @@ export const addSmurf = (name, nickname, position, description) => {
     }
 }
 
-export const addError = (newError) => {
+export const setError = (newError) => {
     return {
-        type: ADD_ERROR,
+        type: SET_ERROR,
         payload: newError
     }
 }
