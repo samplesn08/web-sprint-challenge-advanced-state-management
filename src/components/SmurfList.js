@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { v4 as uuid } from 'uuid';
 import Smurf from './Smurf';
 
  const SmurfList = (props)=> {
@@ -18,7 +19,7 @@ import Smurf from './Smurf';
 
     return(<div className="listContainer">
         {props.smurfs.map(smurf => (
-            <Smurf key={smurf.id} smurf={smurf} />
+            <Smurf key={uuid()} smurf={smurf} />
         ))}
     </div>);
 }

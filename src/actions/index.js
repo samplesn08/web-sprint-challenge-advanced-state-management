@@ -6,18 +6,19 @@ export const GET_SMURFS_FAIL = 'GET_SMURFS_FAIL';
 export const ADD_SMURF = 'ADD_SMURF';
 export const ADD_ERROR = 'ADD_ERROR';
 
-export const fetchSmurfs = () => dispatch => {
-    dispatch({ type: GET_SMURFS_START });
-    axios.get('http://localhost:3333/smurfs')
+export function fetchSmurfs() {
+    return function(dispatch) {
+    dispatch({ type: GET_SMURFS_START })
+    return axios.get('http://localhost:3333/smurfs')
         .then(res => {
             console.log(res)
-            dispatch({ type: GET_SMURFS_SUCCESS, payload: res })
+            dispatch({ type: GET_SMURFS_SUCCESS, payload: res.data })
         })
         .catch(err => {
             console.log(err)
             dispatch({ type: GET_SMURFS_FAIL, payload: err })
         })
-}
+}}
 
 export const addSmurf = (name, nickname, position, description) => {
     return {
